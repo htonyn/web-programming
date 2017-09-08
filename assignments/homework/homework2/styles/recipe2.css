@@ -1,0 +1,42 @@
+body {
+    background-image: url("../res/lemon-meringue.jpg");
+    background-size: cover;
+}
+
+.img-lemon-pie {
+    float: right;
+    padding: 5px;
+    height: 25%;
+    width: 25%;
+}
+
+.overview {
+    text-align: left;
+    padding: 5px;
+}
+
+.clearFloat {
+    clear: both;
+}
+
+.main-column {
+    text-align: left;
+    overflow-y: scroll;
+}
+
+.sub-header {
+    letter-spacing: 3px;
+}
+
+.ingredients {
+    width: 50%;
+    float: left;
+}
+.directions {
+    width: 50%;
+    float: right;
+}
+
+span {
+    font-weight: bold;
+}
