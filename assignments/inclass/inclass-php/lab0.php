@@ -28,20 +28,37 @@ echo "String has ".strlen($inputStr)." characters.";
 echo "<h2>Q5</h2>";
 
 $input = "WDWWLWWWLDDWDLL";
+// My user defined function
 function stringOccurrence($stringInput, $pattern) {
     $pos = strpos($stringInput, $pattern);
+    echo $pos;
     if ($pos) {
         return substr($stringInput, $pos+strlen($pattern),1);
     } else {
         return "N/A";
     }
 }
+
 echo "The first letter after WWW in ".$input." is ".stringOccurrence($input, "WWW");
+
+// Without Function
+$string = "SLKJFDSJLKFSDLKFSDLKJFWWWLSKDJGH";
+$search = "WWW";
+$letter = "N/A";
+$www = strpos($string, $search);
+if ($www) {
+    $letter = substr($string, $www+strlen($search),1);
+    $letter = substr($string, strlen($search)+1,1);
+}
+echo $letter;
+
+
 
 echo "<h2>Q6</h2>";
 
 function palindromeCheck($input) {
     $lower = strtolower($input);
+
     if($lower == strrev($lower)) {
         echo $input." is a palindrome.<br>";
     } else {
@@ -83,5 +100,4 @@ if (date("L")) {
     echo "<b>It isn't</b><br>";
 }
 // function is there if using the date's leap year isn't allowed
-
 ?>

@@ -15,6 +15,7 @@ isBitten();
 echo "<table width=300px border=1>";
 for ($i = 0; $i < 8; $i++) {
     echo "<tr>";
+    $starter = 0;
     $toggle = 0;
     for ($j = 0; $j < 8; $j++) {
         if ($toggle%2==0) {
