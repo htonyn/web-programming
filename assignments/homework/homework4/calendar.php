@@ -49,13 +49,18 @@
             echo "<tr><td>";
             $hour = date("H");
             $a = date("A");
-            if ($hour+$i>12) {
-                $hour-=12;
-                if ($a=="AM") {
+            if ($hour>12) { 
+                if ($a == "AM") {
                     $a = "PM";
-                } else {
+                }
+            }
+            if ($hour+$i>= 24) {
+                if ($a == "PM") {
                     $a = "AM";
                 }
+            }
+            while ($hour+$i>12) {
+                $hour-=12;
             }
             echo ($hour+$i).":00".$a;
             echo "</td>";
