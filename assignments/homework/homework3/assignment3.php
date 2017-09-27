@@ -60,7 +60,6 @@ foreach ($sortedMonth as $entry) {
 }
 
 echo "<h1>Part 4</h1>";
-
 $restaurants = array(
     array('place' => 'Chama Gaucha', 'price' => '40.50'),
     array('place' => 'Aviva by Kameel', 'price' => '15.00'),

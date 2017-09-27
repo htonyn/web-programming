@@ -71,7 +71,7 @@ $restaurants = array(
     array('place' => 'Canoe', 'price' => '35.50'),
     array('place' => 'One Flew South', 'price' => '21.00'),
     array('place' => 'Fox Bros. BBQ', 'price' => '15.00'),
-    array('place' => 'South City Kitchen Midtown', 'price' => '29.00'),
+    array('place' => 'South City Kitchen Midtown', 'price' => '29.00')
 );
 
 function printMultiDimensional($multiDimensional) {
