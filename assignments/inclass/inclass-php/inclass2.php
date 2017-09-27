@@ -1,10 +1,20 @@
 <html>
-<head>
-    
-</head>
 <body>
     <div class="who-am-i">
         
+        <form action="inclass2.php" method="post">
+        What is your name? 
+        <input type="text" name="input_name"><br>
+        <input type="submit" name="initialSend" value="Submit"/>
+        </form>
+
+        <?php
+            if(isset($_POST['initialSend'])) {
+                $name = $_POST['input_name'];
+                echo "Hello ".$name;
+            }
+        ?>
+
         <form action="inclass2.php" method="post">            
             <select id="prefix" name="select_prefix">
                 <option value="0">Mr.</option>
