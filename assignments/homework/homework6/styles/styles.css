@@ -1,0 +1,121 @@
+/* 
+#0C0032
+#190061
+#240090
+#3500D3
+#282828
+*/
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #282828;
+    color: white;
+    font-family: defaultFont;
+}
+
+.nav-container {
+    width: 100%;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    background-color: #0C0032;
+}
+a {
+    text-decoration: none;
+}
+.nav-set-1 {
+    float: left;
+    margin: 5px;
+    width: 120px;
+}
+
+.nav-set-2 {
+    float: right;
+    margin: 5px;
+    width: 120px;
+}
+
+.nav-link {
+    background-color: #3500D3;
+    line-height: 20pt;
+    color: white;
+    text-align: center;
+}
+
+.nav-link:hover {
+    background-color: #240090;
+}
+
+#container {
+    position: fixed;
+    top: 36px;
+    padding: 10px;
+}
+
+#container div {
+    position: fixed;
+    background-color: #282828;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+#container #part-a div {
+    position: relative;
+}
+
+.form {
+    max-height: 10%;
+}
+
+.table-content {
+    margin: 0 auto;
+    text-align: center;
+    overflow-y: scroll;
+}
+
+table, tr, th, td {
+    margin: 0 auto;
+    border: 1px solid white;
+    border-spacing: 0;    
+}
+tr, td {
+    padding: 2px;
+}
+
+#part-b {
+    float: left;
+    margin: 0;
+}
+
+#b-output {
+    background-color: #0C0032;
+    clear: both;
+    max-width: 30%;
+    max-height: 50%;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 2px;
+}
+#b-form, #b-print, #b-print-2 {
+    background-color: #3500D3;
+    border-radius: 10px;
+    border: 1px solid black;
+    max-width: 50%;
+    max-height: 50%;
+    right: 10px;
+    padding: 2px;
+}
+#b-print, #b-print-2 {
+    max-height: 50px;
+    color: white;
+}
+#timer {
+    text-align: center;
+    max-height: 50%;
+}
+@font-face {
+    font-family: defaultFont;
+    src: url(../src/MyriadPro-Reg.ttf);
+}

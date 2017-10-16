@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Homework 6 - JavaScript</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css"/>
+</head>
+<body>
+    <div class="nav-container">
+        <div class="nav-set-1" id="left-nav">
+                <a href="http://codd.cs.gsu.edu/~hnguyen124/index.html"><div class="nav-link">Home</div></a>
+        </div>
+        <div class="nav-set-2">
+                <a href="#" onclick="tabSwap('part-c','container')"><div class="nav-link">Part C</div></a>
+        </div>
+        <div class="nav-set-2">
+            <a href="#" onclick="tabSwap('part-b','container')"><div class="nav-link">Part B</div></a>
+        </div>
+        <div class="nav-set-2" id="left-nav">
+            <a href="#" onclick="tabSwap('part-a','container')"><div class="nav-link">Part A</div></a>
+        </div>        
+    </div>
+    <div class="container" id="container">
+        <div class="part-div" id="part-c">Part C</div>
+        <div class="part-div" id="part-a">
+            <div class="form">
+                <button onclick="employeeWage()">Input Wages</button>
+                <hr>
+            </div>
+            <div id="table-content">
+                
+            </div>
+        </div>
+        <div class="part-div" id="part-b">
+            <div id="b-output" style="background-color: #0C0032">
+                Output<hr>
+            </div>
+            <div id="b-form" style="background-color: #0C0032">
+                <span id="time-id">150</span> Seconds<br>
+                <input id="numberGuess"></input>
+                <button onclick="initializeGuessing()">Guess!</button>
+                <hr>
+                <div id="b-print" style="background-color: #0C0032"></div><br><br>
+                <div id="b-print-2" style="background-color: #0C0032"></div>
+            </div>                                
+        </div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="scripts/scripts.js"></script>
+</html>
