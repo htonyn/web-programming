@@ -80,3 +80,7 @@ function initializeGuessing() {
     }
     guessingGame();
 }
+
+function matchCards() {
+    
+}
