@@ -85,21 +85,23 @@ function initializeGuessing() {
     guessingGame();
 }
 
+var card = [{id: 1, image: 1},
+    {id: 2, image: 2},
+    {id: 3, image: 2},
+    {id: 4, image: 2},
+    {id: 5, image: 2},
+    {id: 6, image: 2},
+    {id: 7, image: 2},
+    {id: 8, image: 2},
+    {id: 9, image: 2},
+    {id: 10, image: 2},
+    {id: 11, image: 2},
+    {id: 12, image: 2}
+];
+
 function potato(counterCard) {
-    var card = [{id: 1, image: 1},
-                {id: 2, image: 2},
-                {id: 3, image: 2},
-                {id: 4, image: 2},
-                {id: 5, image: 2},
-                {id: 6, image: 2},
-                {id: 7, image: 2},
-                {id: 8, image: 2},
-                {id: 9, image: 2},
-                {id: 10, image: 2},
-                {id: 11, image: 2},
-                {id: 12, image: 2},
-    ];
-    var arrayCards = [card[0], card[1], 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+    
+    var arrayCards = [card[0], card[1], card[2], card[3], card[4], card[5], card[6], card[7], card[8], card[9], card[10], card[11], card[12], card[13], card[14], card[15]];
     console.log(arrayCards[counterCard].id);
     document.getElementById('test-value').innerHTML = "You selected "+arrayCards[counterCard].id;
 }
