@@ -85,24 +85,42 @@ function initializeGuessing() {
     guessingGame();
 }
 
-var card = [{id: 1, image: 1},
-    {id: 2, image: 2},
-    {id: 3, image: 2},
-    {id: 4, image: 2},
-    {id: 5, image: 2},
-    {id: 6, image: 2},
-    {id: 7, image: 2},
-    {id: 8, image: 2},
-    {id: 9, image: 2},
-    {id: 10, image: 2},
-    {id: 11, image: 2},
-    {id: 12, image: 2}
+var card = [{id: 1, image: "src/1.png", state: 0 },
+    {id: 2, image: "src/2.png", state: 0 },
+    {id: 3, image: "src/3.png", state: 0 },
+    {id: 4, image: "src/4.png", state: 0 },
+    {id: 5, image: "src/5.png", state: 0 },
+    {id: 6, image: "src/6.png", state: 0 },
+    {id: 7, image: "src/7.png", state: 0 },
+    {id: 8, image: "src/8.png", state: 0 },
+    {id: 9, image: "src/9.png", state: 0 },
+    {id: 10, image: "src/10.png", state: 0 },
+    {id: 11, image: "src/11.png", state: 0 },
+    {id: 12, image: "src/12.png", state: 0 }
 ];
 
+var game = new Array();
+
+function shuffle(total) {
+    game = new Array();
+    console.log("Pairs: "+total);
+    for(i = 0; i < total; i++) {
+        game.push(card[i]);
+        game.push(card[i]);
+        console.log("Pushing: "+i);
+        console.log(game.length);
+    }
+    console.log(game.length);
+    for(j = 0; j < game.length; j++) {
+        index = Math.floor(Math.random() * total);
+        temp = game[j];
+        game[j] = game[index];
+        game[index] = temp;
+    }
+}
 function potato(counterCard) {
-    
     var arrayCards = [card[0], card[1], card[2], card[3], card[4], card[5], card[6], card[7], card[8], card[9], card[10], card[11], card[12], card[13], card[14], card[15]];
-    console.log(arrayCards[counterCard].id);
+    // console.log(arrayCards[counterCard].id);
     document.getElementById('test-value').innerHTML = "You selected "+arrayCards[counterCard].id;
 }
 
@@ -110,18 +128,21 @@ function matchStart() {
     duration = 1;
     matchesCount = 0;
     matchCards = document.getElementById('selectPairs').value;
+    console.log("Match Start: Pairs = "+matchCards);
     counter = 0;
     if (true) {
         matchTimer = 0;
         matchCounter = setInterval(function() {
             matchTimer++;
         }, 1000);
+        shuffle(matchCards);
         matching = 1;
         matchDisplay = '<table>';
         for (i = 0; i < 4; i++) {
             matchDisplay += '<tr>';
             for(j = 0; j<matchCards/2; j++) {
-                matchDisplay += '<td id='+i+'-'+j+' height="100px" width="100px" onclick="potato('+(counter++)+')">'+counter+'</td>';
+                matchDisplay += '<td id='+(counter++)+' height="100px" width="100px"><img src='+game[counter-1].image+' width=100px onclick="potato('+(game[counter-1].id)+')"/></td>';
+                console.log(counter);
             }
             matchDisplay += '</tr>';
         }
