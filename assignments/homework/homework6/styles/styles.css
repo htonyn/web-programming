@@ -89,6 +89,26 @@ tr, td {
     margin: 0;
 }
 
+#part-c {
+    max-height: 80%;
+    margin: 0;
+    text-align: center;
+}
+
+#match-table {
+    margin: 0 auto;
+    max-height: 80%;
+    max-width: 98%;
+    border-radius: 10px;
+    padding: 2px;
+    border: 1px solid black;
+}
+
+#match-ready-bt {
+    position: fixed;
+    bottom: 25px;
+}
+
 #b-output {
     background-color: #0C0032;
     clear: both;
@@ -110,6 +130,10 @@ tr, td {
 #b-print, #b-print-2 {
     max-height: 50px;
     color: white;
+}
+#match-controls {
+    bottom: 5px;
+    max-height: 50px;
 }
 #timer {
     text-align: center;

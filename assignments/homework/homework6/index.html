@@ -22,7 +22,6 @@
         </div>        
     </div>
     <div class="container" id="container">
-        <div class="part-div" id="part-c">Part C</div>
         <div class="part-div" id="part-a">
             <div class="form">
                 <button onclick="employeeWage()">Input Wages</button>
@@ -44,6 +43,28 @@
                 <div id="b-print" style="background-color: #0C0032"></div><br><br>
                 <div id="b-print-2" style="background-color: #0C0032"></div>
             </div>                                
+        </div>
+        <div class="part-div" id="part-c">
+                <div id="test-value" style="height:50px">#TEST</div>
+            Matching Game<br>
+            <div id="match-table">
+                
+            </div>
+            <br>
+            <div id="match-controls">
+                Number of Pairs: <select name="pairOrders" id="selectPairs">
+                        <option value="8">8</option>
+                        <option value="10">10</option>
+                        <option value="12">12</option>
+                </select>
+                Difficulty: <select name="difficulty" id="selectDifficulty">
+                        <option value="3">Easy</option>
+                        <option value="5">Normal</option>
+                        <option value="8">Hard</option>
+                </select>
+                <button onclick="matchStart()">Ready!</button>
+            </div>
+            
         </div>
     </div>
 </body>
