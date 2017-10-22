@@ -12,7 +12,7 @@
                 <a href="http://codd.cs.gsu.edu/~hnguyen124/index.html"><div class="nav-link">Home</div></a>
         </div>
         <div class="nav-set-2">
-                <a href="#" onclick="tabSwap('part-c','container')"><div class="nav-link">Part C</div></a>
+                <a href="part-c.html" onclick=""><div class="nav-link">Part C</div></a>
         </div>
         <div class="nav-set-2">
             <a href="#" onclick="tabSwap('part-b','container')"><div class="nav-link">Part B</div></a>
@@ -22,15 +22,6 @@
         </div>        
     </div>
     <div class="container" id="container">
-        <div class="part-div" id="part-a">
-            <div class="form">
-                <button onclick="employeeWage()">Input Wages</button>
-                <hr>
-            </div>
-            <div id="table-content">
-                
-            </div>
-        </div>
         <div class="part-div" id="part-b">
             <div id="b-output" style="background-color: #0C0032">
                 Output<hr>
@@ -44,27 +35,14 @@
                 <div id="b-print-2" style="background-color: #0C0032"></div>
             </div>                                
         </div>
-        <div class="part-div" id="part-c">
-                <div id="test-value" style="height:50px">#TEST</div>
-            Matching Game<br>
-            <div id="match-table">
+        <div class="part-div" id="part-a">
+            <div class="form">
+                <button onclick="employeeWage()">Input Wages</button>
+                <hr>
+            </div>
+            <div id="table-content">
                 
             </div>
-            <br>
-            <div id="match-controls">
-                Number of Pairs: <select name="pairOrders" id="selectPairs">
-                        <option value="8">8</option>
-                        <option value="10">10</option>
-                        <option value="12">12</option>
-                </select>
-                Difficulty: <select name="difficulty" id="selectDifficulty">
-                        <option value="3">Easy</option>
-                        <option value="5">Normal</option>
-                        <option value="8">Hard</option>
-                </select>
-                <button onclick="matchStart()">Ready!</button>
-            </div>
-            
         </div>
     </div>
 </body>

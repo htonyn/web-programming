@@ -1,0 +1,93 @@
+<!doctype HTML>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Matching!</title>
+    <style>
+        body, html {
+            background-color: #282828;
+            margin: 0;
+            padding: 0;
+            color: white;
+            height: 100%;
+            width: 100%;
+            overflow: none;
+        }
+        table, td, tr {
+            border: 1px solid white;
+            border-collapse: collapse;
+        }
+        table {
+            height: 80%;
+            margin: 0 auto;
+        }
+        img {
+            width: 100%;
+        }
+        .flip-region {
+            perspective: 1000px;
+        }
+
+        .flip {
+            transition: 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .flip-region.flipping .flip {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: black;
+        }
+        .card-front, .card-back, .flip-region {
+            height: 140px;
+            width: 100px;
+        }
+        .card-front {
+            z-index: 2;
+            transform: rotateY(0deg);
+        }
+        .card-back {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div id="test-value" style="height:50px">#TEST</div>
+        Matching Game<br>
+        <div id="match-controls">
+            Number of Pairs: <select name="pairOrders" id="selectPairs">
+                    <option value="8">8</option>
+                    <option value="10">10</option>
+                    <option value="12">12</option>
+            </select>
+            Difficulty: <select name="difficulty" id="selectDifficulty">
+                    <option value="8">Easy</option>
+                    <option value="5">Normal</option>
+                    <option value="3">Hard</option>
+            </select>
+            <button onclick="matchStart()">Ready!</button>
+        </div>
+        <div id="matching-timer"></div>
+        <div id="match-table">
+            <ol>
+                <li>Select the number of pairs you want to match</li>
+                <li>Select difficulty: Easy will reveal pairs for 8 seconds, Normal for 5, Hard for 3</li>
+                <li>After the reveal, cards will be flipped. Simply click two cards to match them</li>
+                <li></li>
+                <li></li>
+                <li></li>
+                
+            </ol>
+        </div>
+        <br>
+        
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="part-c-scripts.js"></script>
+</html>

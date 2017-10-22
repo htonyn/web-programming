@@ -118,10 +118,42 @@ function shuffle(total) {
         game[index] = temp;
     }
 }
+var matchVariable = 0;
+var matchFirst;
+var matchesCount;
+var cardOne;
 function potato(counterCard) {
-    var arrayCards = [card[0], card[1], card[2], card[3], card[4], card[5], card[6], card[7], card[8], card[9], card[10], card[11], card[12], card[13], card[14], card[15]];
-    // console.log(arrayCards[counterCard].id);
-    document.getElementById('test-value').innerHTML = "You selected "+arrayCards[counterCard].id;
+    if (game[counterCard].state == 0)     {
+        matchVariable++;
+        if (matchVariable%2==1) {
+            matchFirst = game[counterCard];
+            cardOne = counterCard;
+            // Flip Animation for Card 1
+        } else {
+            if (matchFirst.id == game[counterCard].id) {
+                // Flip Animation for Card 2
+                matchesCount++;
+                matchFirst.state = 1;
+                game[counterCard].state = 1;
+                console.log("That's a match! "+game[counterCard].id);
+                console.log("Matches: "+matchesCount+"/"+document.getElementById('selectPairs').value);
+                if (matchesCount==document.getElementById('selectPairs').value) {
+                    console.log("All matches found");
+                    matchingWin();
+                    document.getElementById('test-value').innerHTML = "You win!";
+                }
+            } else {
+                // Flip Animation for Card 1 and 2
+            }
+        }
+    } else {
+        console.log("This card is already matched.");
+    }
+    // console.log(arrayCards[counterCard].id);   
+}
+
+function matchingWin() {
+
 }
 
 function matchStart() {
@@ -137,11 +169,11 @@ function matchStart() {
         }, 1000);
         shuffle(matchCards);
         matching = 1;
-        matchDisplay = '<table>';
+        matchDisplay = '<table class="match-table-ele">';
         for (i = 0; i < 4; i++) {
             matchDisplay += '<tr>';
             for(j = 0; j<matchCards/2; j++) {
-                matchDisplay += '<td id='+(counter++)+' height="100px" width="100px"><img src='+game[counter-1].image+' width=100px onclick="potato('+(game[counter-1].id)+')"/></td>';
+                matchDisplay += '<td class="match-cell" id='+(counter++)+'><div class="flip-region"><div class="flip"><img src='+game[counter-1].image+' onclick="potato('+(counter-1)+')"/></div></div></td>';
                 console.log(counter);
             }
             matchDisplay += '</tr>';

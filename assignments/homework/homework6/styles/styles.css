@@ -101,7 +101,7 @@ tr, td {
     max-width: 98%;
     border-radius: 10px;
     padding: 2px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 #match-ready-bt {
@@ -139,7 +139,18 @@ tr, td {
     text-align: center;
     max-height: 50%;
 }
+img {
+    height: 20%;
+}
+.match-cell {
+    height: 25%;
+    width: 100px;
+}
+.match-table-ele {
+    height: 50%;
+}
 @font-face {
     font-family: defaultFont;
     src: url(../src/MyriadPro-Reg.ttf);
 }
+
