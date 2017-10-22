@@ -25,7 +25,6 @@ var matchTimer;
 
 function flip(target) {
     $(target).toggleClass('flipping');
-    
 }
 
 function shuffle(total) {
@@ -72,8 +71,7 @@ function potato(counterCard, target) {
                 console.log("Matches: "+matchesCount+"/"+document.getElementById('selectPairs').value);
                 if (matchesCount==document.getElementById('selectPairs').value) {
                     console.log("All matches found");
-                    matchingWin();
-                    document.getElementById('test-value').innerHTML = "You win!";
+                    matchEnd(1);
                 }
             } else {
                 for (i = 0; i < game.length; i++) {
@@ -103,48 +101,56 @@ function potato(counterCard, target) {
 }
 
 function matchStart() {
-    matchesCount = 0;
-    matchCards = document.getElementById('selectPairs').value;
-    waitFlip = document.getElementById('selectDifficulty').value;
-    console.log("Match Start: Pairs = "+matchCards);
-    counter = 0;
-    if (matchCards == 8) {
-        matchTimer = 120;
-    } else if (matchCards == 10) {
-        matchTimer = 150;
-    } else if (matchCards == 12) {
-        matchTimer = 180;
+    if (matching == 0) {
+        $('#match-controls').hide('slow');
+        $('.modal-background').hide();
+        matchesCount = 0;
+        matchCards = document.getElementById('selectPairs').value;
+        waitFlip = document.getElementById('selectDifficulty').value;
+        console.log("Match Start: Pairs = "+matchCards);
+        counter = 0;
+        if (matchCards == 8) {
+            matchTimer = 120;
+        } else if (matchCards == 10) {
+            matchTimer = 150;
+        } else if (matchCards == 12) {
+            matchTimer = 180;
+        }
+        
+        matchCounter = setInterval(function() {
+            document.getElementById('matching-timer').innerHTML = "Time Left: " + matchTimer--;
+            if (matchTimer < 0) {
+                clearInterval(matchCounter);
+                matchEnd(0);
+            }
+        }, 1000);
+        shuffle(matchCards);
+        matching = 1;
+        matchDisplay = '<table class="match-table-ele">';
+        for (i = 0; i < 4; i++) {
+            matchDisplay += '<tr>';
+            for(j = 0; j<matchCards/2; j++) {
+                matchDisplay += '<td class="match-cell" id='+(counter++)+'><div class="flip-region" onclick="potato('+(counter-1)+', this)"><div class="flip"><div class="card-front"><img src="'+game[counter-1].image+'"/></div><div class="card-back"><img src="src/card-back.png"/></div></div></div></td>';
+                // console.log(counter);
+            }
+            matchDisplay += '</tr>';
+        }
+        matchDisplay += '</table>';
+        document.getElementById('match-table').innerHTML = matchDisplay;
+        setTimeout(function() {
+            $('.flip-region').toggleClass('flipping');
+            for (i = 0; i < game.length; i++) {
+                game[i].state = 0;
+            }     
+        },waitFlip*1000);
+    } else {
+        console.log("Game already running.");
     }
     
-    matchCounter = setInterval(function() {
-        document.getElementById('matching-timer').innerHTML = "Time Left: " + matchTimer--;
-        if (matchTimer < 0) {
-            clearInterval(matchCounter);
-            matchLose();
-        }
-    }, 1000);
-    shuffle(matchCards);
-    matching = 1;
-    matchDisplay = '<table class="match-table-ele">';
-    for (i = 0; i < 4; i++) {
-        matchDisplay += '<tr>';
-        for(j = 0; j<matchCards/2; j++) {
-            matchDisplay += '<td class="match-cell" id='+(counter++)+'><div class="flip-region" onclick="potato('+(counter-1)+', this)"><div class="flip"><div class="card-front"><img src="'+game[counter-1].image+'"/></div><div class="card-back"></div></div></div></td>';
-            // console.log(counter);
-        }
-        matchDisplay += '</tr>';
-    }
-    matchDisplay += '</table>';
-    document.getElementById('match-table').innerHTML = matchDisplay;
-    setTimeout(function() {
-        $('.flip-region').toggleClass('flipping');
-        for (i = 0; i < game.length; i++) {
-            game[i].state = 0;
-        }     
-    },waitFlip*1000);
 }
 
-function matchLose() {
+function matchEnd(result) {
+    clearInterval(matchCounter);
     for (i = 0; i < game.length; i++) {
         game[i].state = 3;
     }
@@ -174,10 +180,16 @@ function matchLose() {
         default:
             break;
     }
-    loseResult = "You played on "+difficulty+" matching "+matchesCount+"/"+document.getElementById('selectPairs').value+" pairs in "+startTimer+"s.<br>";
-    document.getElementById('match-table').innerHTML = loseResult;
-}
-
-function matchingWin() {
-    
+    if (result == 1) {
+        resultString = "You Win!<br>";
+    } else {
+        resultString = "You Lose! :(<br>";
+    }
+    resultString += "You played on "+difficulty+" matching "+matchesCount+"/"+document.getElementById('selectPairs').value+" pairs in "+(startTimer-matchTimer-1)+"s.<br>";
+    resultString += 'Number of Pairs: <select name="pairOrders" id="selectPairs"><option value="8">8</option><option value="10">10</option><option value="12">12</option></select>';
+    resultString += 'Difficulty: <select name="difficulty" id="selectDifficulty"><option value="8">Easy</option><option value="5">Normal</option><option value="3">Hard</option></select>';
+    resultString += '<button onclick="matchStart()">Ready!</button>';
+    document.getElementById('modal').innerHTML = resultString;
+    matching = 0;
+    $('.modal-background').show();
 }

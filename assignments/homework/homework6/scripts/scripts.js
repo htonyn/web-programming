@@ -42,6 +42,8 @@ function guessingGame() {
     } else {
         if (inputValue == globalValue) {
             document.getElementById('b-print').innerHTML = "You did it!";
+            var audio = new Audio('src/audio/correct.mp3');
+            audio.play();
             document.getElementById('b-output').innerHTML += "Guess #"+(10-globalGuesses)+": "+inputValue+" - Correct<br>";
             clearInterval(intervalControl);
             gameToggle = 0;
@@ -49,10 +51,14 @@ function guessingGame() {
             initializeGuessing();
         } else if (inputValue > globalValue) {
             document.getElementById('b-print').innerHTML = "Too high!";
+            var audio = new Audio('src/audio/wrong.mp3');
+            audio.play();
             globalGuesses--;
             document.getElementById('b-output').innerHTML += "Guess #"+(10-globalGuesses)+": "+inputValue+" - Too High<br>";
         } else {
             document.getElementById('b-print').innerHTML = "Too low!";
+            var audio = new Audio('src/audio/wrong.mp3');
+            audio.play();
             globalGuesses--;
             document.getElementById('b-output').innerHTML += "Guess #"+(10-globalGuesses)+": "+inputValue+" - Too Low<br>";
         }
@@ -83,102 +89,4 @@ function initializeGuessing() {
         globalGuesses = 10;
     }
     guessingGame();
-}
-
-var card = [{id: 1, image: "src/1.png", state: 0 },
-    {id: 2, image: "src/2.png", state: 0 },
-    {id: 3, image: "src/3.png", state: 0 },
-    {id: 4, image: "src/4.png", state: 0 },
-    {id: 5, image: "src/5.png", state: 0 },
-    {id: 6, image: "src/6.png", state: 0 },
-    {id: 7, image: "src/7.png", state: 0 },
-    {id: 8, image: "src/8.png", state: 0 },
-    {id: 9, image: "src/9.png", state: 0 },
-    {id: 10, image: "src/10.png", state: 0 },
-    {id: 11, image: "src/11.png", state: 0 },
-    {id: 12, image: "src/12.png", state: 0 }
-];
-
-var game = new Array();
-
-function shuffle(total) {
-    game = new Array();
-    console.log("Pairs: "+total);
-    for(i = 0; i < total; i++) {
-        game.push(card[i]);
-        game.push(card[i]);
-        console.log("Pushing: "+i);
-        console.log(game.length);
-    }
-    console.log(game.length);
-    for(j = 0; j < game.length; j++) {
-        index = Math.floor(Math.random() * total);
-        temp = game[j];
-        game[j] = game[index];
-        game[index] = temp;
-    }
-}
-var matchVariable = 0;
-var matchFirst;
-var matchesCount;
-var cardOne;
-function potato(counterCard) {
-    if (game[counterCard].state == 0)     {
-        matchVariable++;
-        if (matchVariable%2==1) {
-            matchFirst = game[counterCard];
-            cardOne = counterCard;
-            // Flip Animation for Card 1
-        } else {
-            if (matchFirst.id == game[counterCard].id) {
-                // Flip Animation for Card 2
-                matchesCount++;
-                matchFirst.state = 1;
-                game[counterCard].state = 1;
-                console.log("That's a match! "+game[counterCard].id);
-                console.log("Matches: "+matchesCount+"/"+document.getElementById('selectPairs').value);
-                if (matchesCount==document.getElementById('selectPairs').value) {
-                    console.log("All matches found");
-                    matchingWin();
-                    document.getElementById('test-value').innerHTML = "You win!";
-                }
-            } else {
-                // Flip Animation for Card 1 and 2
-            }
-        }
-    } else {
-        console.log("This card is already matched.");
-    }
-    // console.log(arrayCards[counterCard].id);   
-}
-
-function matchingWin() {
-
-}
-
-function matchStart() {
-    duration = 1;
-    matchesCount = 0;
-    matchCards = document.getElementById('selectPairs').value;
-    console.log("Match Start: Pairs = "+matchCards);
-    counter = 0;
-    if (true) {
-        matchTimer = 0;
-        matchCounter = setInterval(function() {
-            matchTimer++;
-        }, 1000);
-        shuffle(matchCards);
-        matching = 1;
-        matchDisplay = '<table class="match-table-ele">';
-        for (i = 0; i < 4; i++) {
-            matchDisplay += '<tr>';
-            for(j = 0; j<matchCards/2; j++) {
-                matchDisplay += '<td class="match-cell" id='+(counter++)+'><div class="flip-region"><div class="flip"><img src='+game[counter-1].image+' onclick="potato('+(counter-1)+')"/></div></div></td>';
-                console.log(counter);
-            }
-            matchDisplay += '</tr>';
-        }
-        matchDisplay += '</table>';
-    }
-    document.getElementById('match-table').innerHTML = matchDisplay;
 }

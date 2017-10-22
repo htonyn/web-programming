@@ -1,0 +1,85 @@
+body, html {
+    background-color: #282828;
+    margin: 0;
+    padding: 0;
+    color: white;
+    height: 100%;
+    width: 100%;
+    overflow: none;
+}
+#matching-timer {
+    text-align: center;
+    font-size: 30px;
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+    background-color: rgb(192, 192, 192);
+    line-height: 30px;
+}
+#match-table {
+    bottom: 100px;
+}
+table, td, tr {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+table {
+    height: 80%;
+    margin: 0 auto;
+}
+img {
+    width: 100%;
+}
+.flip-region {
+    perspective: 1000px;
+}
+
+.flip {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.flip-region.flipping .flip {
+    transform: rotateY(180deg);
+}
+.card-front, .card-back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+}
+.card-front, .card-back, .flip-region {
+    height: 140px;
+    width: 100px;
+}
+.card-front {
+    z-index: 2; /* z-index used to bring .card-front to the stack */
+    transform: rotateY(0deg);
+}
+.card-back {
+    transform: rotateY(180deg);
+}
+.modal-background {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    top: 0; 
+    left: 0;
+    background-color: rgba(0,0,0,0.4);
+}
+#modal {
+    background-color: rgb(65, 135, 240);
+    color: black;
+    font-size: 20pt;
+    text-align: center;
+    margin: 20% auto;
+    padding: 15px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 10px;
+}
