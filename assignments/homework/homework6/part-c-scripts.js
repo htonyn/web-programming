@@ -185,7 +185,8 @@ function matchEnd(result) {
     } else {
         resultString = "You Lose! :(<br>";
     }
-    resultString += "You played on "+difficulty+" matching "+matchesCount+"/"+document.getElementById('selectPairs').value+" pairs in "+(startTimer-matchTimer-1)+"s.<br>";
+    resultString += "You played on "+difficulty+" matching "+matchesCount+"/"+document.getElementById('selectPairs').value+" pairs in "+(startTimer-matchTimer-1)+"s.<br><br>";
+    document.getElementById('match-controls').innerHTML = "";
     resultString += 'Number of Pairs: <select name="pairOrders" id="selectPairs"><option value="8">8</option><option value="10">10</option><option value="12">12</option></select>';
     resultString += 'Difficulty: <select name="difficulty" id="selectDifficulty"><option value="8">Easy</option><option value="5">Normal</option><option value="3">Hard</option></select>';
     resultString += '<button onclick="matchStart()">Ready!</button>';
