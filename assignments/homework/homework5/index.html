@@ -1,0 +1,139 @@
+<!doctype HTML>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Quiz 3 - Javascript In Class</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 5px;
+        }
+        #div-id, #div-fn, #div-ln {
+            color: red;
+            font-weight: bold;
+        }
+        #alert-container {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            margin: auto;
+            width: 100%;
+            height: 100%;
+            top: 0; 
+            left: 0;
+            background-color: rgba(0,0,0,0.4);
+        }
+        #alert {
+            background-color: rgb(65, 135, 240);
+            color: black;
+            font-size: 20pt;
+            text-align: center;
+            margin: 20% auto;
+            padding: 15px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 10px;
+
+        }
+        .extra-credit {
+            position: fixed;
+            width: 100%;
+            bottom: 0px;
+            text-align: center;
+            padding: 5px;
+        }
+        ul {
+            width: 20%;
+            margin: 0 auto;
+        }
+        .close {
+            color: #282828;
+            float: right;
+            font-size: 56px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: red;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Do not put alert box -->
+    <div id="div-id"></div>ID: <input id="id-num"></input>
+    <div id="div-fn"></div>First Name: <input id="id-fn"></input>
+    <div id="div-ln"></div>Last Name: <input id="id-ln"></input>
+    <button onclick="addEntry()"/>Add</button>
+    <hr>
+    
+    <div id="display"></div>
+    <div id="alert-container">
+        <span class="close" onclick="closeAlert()">&times;</span>
+        <div id="alert">
+
+        </div>
+    </div>
+    <div class="extra-credit">
+        <h2>Extra Credit</h2><hr>
+        <ul>
+            <li>Numeric validation.</li>
+            <li>Modal.</li>
+        </ul>
+    </div>
+</body>
+<script>
+    var validate = 0;
+    function addEntry() {
+        validate = 1;
+        document.getElementById('alert').innerHTML = "Errors<hr>";
+        if (document.getElementById('id-num').value.length == 0) {
+            document.getElementById('div-id').innerHTML = "* ID is null";
+            document.getElementById('alert').innerHTML += "ID is null.<br>";
+            validate = 0;
+        } else if (isNaN(document.getElementById('id-num').value)) {
+            document.getElementById('div-id').innerHTML = "* ID is non-numeric";
+            document.getElementById('alert').innerHTML += "ID is non-numeric.<br>";
+            validate = 0;
+        } else {
+            document.getElementById('div-id').innerHTML = "";
+        }
+        if (document.getElementById('id-fn').value.length == 0) {
+            console.log("First Name is null");
+            document.getElementById('alert').innerHTML += "First Name is null.<br>";
+            document.getElementById('div-fn').innerHTML = "* First Name is null";
+            validate = 0;
+        } else {
+            document.getElementById('div-fn').innerHTML = "";
+        }
+        if (document.getElementById('id-ln').value.length == 0) {
+            console.log("Last Name is null");
+            document.getElementById('alert').innerHTML += "Last Name is null.<br>";
+            document.getElementById('div-ln').innerHTML = "* Last Name is null";
+            validate = 0;
+        } else {
+            document.getElementById('div-ln').innerHTML = "";
+        }
+        if (validate) {
+            display();
+        } else {
+            document.getElementById('display').innerHTML = "";
+            document.getElementById('alert-container').style.display = "block";
+        }
+    }
+
+    function display() {
+        output = "";
+        output += "ID: "+document.getElementById('id-num').value + "<br>First Name: "+document.getElementById('id-fn').value+"<br>Last Name: "+document.getElementById('id-ln').value+"<br>";
+        document.getElementById('display').innerHTML = output;
+        document.getElementById('id-num').value = "";
+        document.getElementById('id-fn').value = "";
+        document.getElementById('id-ln').value = "";
+    }
+
+    function closeAlert() {
+        document.getElementById('alert-container').style.display = "none";
+    }
+</script>
+</html>
