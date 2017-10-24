@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Egestas</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript">
+	var potato = ["images/img06.jpg","images/img07.jpg","images/img08.jpg","images/img09.jpg","images/img10.jpg"];
+
+	window.onload = function() {
+		imgValue = Math.floor(Math.random() * potato.length);
+		console.log(imgValue);
+		divtag = document.getElementById('splash');
+		imgtag = divtag.childNodes[0];
+		console.log(potato[0]);
+		imgtag.src = potato[imgValue];	
+	}
+
+</script>
+</head>
+<body>
+<div id="header">
+	<div id="logo">
+		<h1><a href="#">Egestas</a></h1>
+		<h2>Fusce tristique bibendum felis</h2>
+	</div>
+	<div id="splash"><img src="images/img06.jpg" alt="random images"/></div>
+	<div id="menu">
+		<ul>
+			<li class="current_page_item"><a href="#" accesskey="1" title="">Home</a></li>
+			<li><a href="#" accesskey="2" title="">Articles</a></li>
+			<li><a href="#" accesskey="3" title="">Blogs</a></li>
+			<li><a href="#" accesskey="4" title="">About Us</a></li>
+			<li><a href="#" accesskey="5" title="">Contacts</a></li>
+			<li><a href="#" accesskey="6" title="">RSS</a></li>
+		</ul>
+	</div>
+</div>
+<hr />
+<!-- start page -->
+<div id="wrapper">
+<div id="page">
+	<!-- start content -->
+	<div id="content">
+		<div class="post">
+			<h2 class="title"><a href="#">Welcome to Egestas</a></h2>
+			<div class="entry">
+      <p>Lorem ipsum dolor sit amet, <a href="#">consectetuer</a> adipiscing elit. Morbi pretium magna. Praesent auctor sem eu urna. Vivamus ornare, eros sed mattis iaculis, sem lectus dictum lacus, at dictum sapien neque ac quam. Suspendisse in sem. <a href="#">Aenean auctor</a>, sem fringilla hendrerit adipiscing, tortor magna rutrum eros, nec aliquam pede magna dignissim massa. Suspendisse congue. Proin nisi nisl, viverra eget, varius sed, rutrum sed, ante. Nunc lacinia, tortor eget adipiscing tempor, magna ligula <a href="#">commodo mi</a>, nec congue arcu odio non libero. Fusce gravida nisi nec ante. Morbi faucibus pulvinar nisl. Phasellus nisi. Mauris vehicula lectus eget orci. <a href="#">Fusce</a> condimentum risus a libero. Duis vel turpis ultrices massa tristique egestas.</p>
+			</div>
+			<p class="meta">Posted on November 5, 2007 by <a href="#">Someone</a> &nbsp;|&nbsp; <a href="#">32 comments</a></p>
+		</div>
+		<div class="post">
+			<h2 class="title"><a href="#">Blandit volutpat consequat</a></h2>
+			<div class="entry">
+				<p>Proin nec magna. Proin nec massa sit amet purus congue molestie. Aliquam erat volutpat. Nulla pellentesque dolor non tellus. Duis vel elit sit amet ipsum vehicula varius. Vestibulum ante ipsum primis in <a href="#">faucibus orci luctus et ultrices</a> posuere cubilia Curae; Suspendisse rhoncus. Nunc est. Praesent interdum lectus quis neque. Aliquam eros. Nulla fermentum dolor eget mi. Cras diam sapien, auctor non, malesuada at, tristique id, dui. Aenean congue ante. </p>
+				<h3>Prom nec magna tempus lorem ipsum dolor</h3>
+				<p>Proin nec magna. Proin nec massa sit amet purus congue molestie. Aliquam erat volutpat. Nulla pellentesque dolor non tellus. Duis vel elit sit amet <a href="#">ipsum vehicula varius</a>. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
+			</div>
+			<p class="meta">Posted on November 5, 2007 by <a href="#">Someone</a> &nbsp;|&nbsp; <a href="#">32 comments</a></p>
+		</div>
+	</div>
+	<!-- end content -->
+	<!-- start sidebar -->
+	<div id="sidebar">
+		<ul>
+			<li>
+				<h2>Categories</h2>
+				<ul>
+					<li><a href="#">Aliquam libero</a></li>
+					<li><a href="#">Consectetuer elit</a></li>
+					<li><a href="#">Metus pellentesque</a></li>
+					<li><a href="#">Suspendisse mauris</a></li>
+					<li><a href="#">Urnanet molestie semper</a></li>
+					<li><a href="#">Proin orci porttitor</a></li>
+				</ul>
+			</li>
+			<li>
+				<h2>Archives</h2>
+				<ul>
+					<li><a href="#">September</a> (23)</li>
+					<li><a href="#">August</a> (31)</li>
+					<li><a href="#">July</a> (31)</li>
+					<li><a href="#">June</a> (30)</li>
+					<li><a href="#">May</a> (31)</li>
+				</ul>
+			</li>
+			<li>
+				<h2>Lorem ipsum dolor </h2>
+				<ul>
+					<li><a href="#">Aliquam libero</a></li>
+					<li><a href="#">Consectetuer elit</a></li>
+					<li><a href="#">Metus pellentesque</a></li>
+					<li><a href="#">Suspendisse mauris</a></li>
+					<li><a href="#">Urnanet molestie semper</a></li>
+					<li><a href="#">Proin orci porttitor</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<!-- end sidebar -->
+	<div style="clear: both;">&nbsp;</div>
+</div>
+</div><!-- end page -->
+<div id="footer">
+	<p class="legal">Copyright (c) 2007 Website Name. All rights reserved.</p>
+	<p class="credit">Designed by <a href="#">Vestibulum Ante</a>.</p>
+</div>
+</body>
+</html>
