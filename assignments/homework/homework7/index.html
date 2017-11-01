@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment 7 - AJAX</title>
+    <link rel="stylesheet" href="styles/styles.css"/>
+</head>
+<body>
+    <h1>Exercise 1</h1><hr>
+    <table>
+        <tr><td></td><td><input type="radio" name="payment" id="radio-credit-card" class="radio-form" value="0"/></td><td><input type="radio" name="payment" id="radio-wire-transfer" class="radio-form" value="1"/></td><td id="potato" rowspan="2"><button onclick="buy()">Buy</button></td></tr>
+        <tr><td>Payment</td><td><label for="radio-credit-card">Credit Card</label></td><td><label for="radio-wire-transfer">Wire Transfer</label></td></tr>
+    </table><br>
+    <div class="input-field" id="credit-field">
+        <form>
+            Card Number:<input type="number" id="bango"/> Expiration: MM<input type="number" style="width: 50px" id="gatsu"/>/YY<input type="number" style="width: 50px" id="nen"/> Security Number: <input type="number" id="kardo-sekyuriti"/>
+        </form>
+        <div id="log"></div>
+    </div>
+    <div class="input-field" id="transfer-field">
+        Transfer the amount to: reg. $957.00, to account 0009286322
+    </div>
+    <h1>Exercise 2</h1><hr>
+    <div class="example-2">
+        <div class="trash-can">
+            <img src="src/trash.png" alt="trash"/>
+        </div>
+        <div class="list-div">
+            
+        </div>
+        <ul class="listing">
+            <li class="list-item" data-id="1">Item 0</li>
+            <li class="list-item" data-id="2">Item 1</li>
+            <li class="list-item" data-id="3">Item 2</li>
+            <li class="list-item" data-id="4">Item 3</li>
+        </ul>
+    </div><br><br><br><br><br>
+    <h1>Exercise 3</h1><hr>
+    <div class="example-3">
+        <ul class="informationable">
+            <li class="info-item">Info 1</li>
+            <li class="info-item">Info 2</li>
+            <li class="info-item">Info 3</li>
+            <li class="info-item">Info 4</li>    
+        </ul>
+        <div id="outputAJAX">k</div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+<script>
+    $('.informationable li').click(function () {
+        
+        var fileInput;
+        switch(this.innerHTML) {
+            case 'Info 1':
+                fileInput = 'potato.txt';
+                break;
+            case 'Info 2':
+                fileInput = 'tomato.txt';
+                break;
+            case 'Info 3':
+                fileInput = 'yes.txt';
+                break;
+            case 'Info 4':
+                fileInput = 'no.txt';
+                break;
+            default:
+                break;
+                
+        }
+        standAlone(fileInput);
+    });
+
+    function standAlone(string) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200) {
+                console.log('Ready');
+                document.getElementById('outputAJAX').innerHTML = this.responseText;
+            }
+        }
+        xhttp.open('GET',string,true);
+        xhttp.send();
+    }
+
+    $('.list-item').draggable({
+        connectToSortable: '.droppable',
+        helper: 'clone'
+    });
+    $('.trash-can').droppable({
+        drop: function (event, ui) {
+            ui.draggable.remove();
+        }
+    })
+
+    $('.radio-form').click(function() {
+        if (this.value == 0) {
+            $('.input-field').hide('slow');
+            $('#credit-field').show();
+        } else {
+            $('.input-field').hide('slow');
+        }
+    });
+
+    function buy() {
+        if ($('#radio-credit-card').is(':checked')) {
+            // validation
+        } else {
+            $('.input-field').hide('slow');
+            $('#transfer-field').show();
+        }
+    }
+
+
+</script>
+</html>
