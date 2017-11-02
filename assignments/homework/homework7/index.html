@@ -22,11 +22,9 @@
     </div>
     <h1>Exercise 2</h1><hr>
     <div class="example-2">
+        <h3>Please drag a list item into the trash can.</h3>
         <div class="trash-can">
             <img src="src/trash.png" alt="trash"/>
-        </div>
-        <div class="list-div">
-            
         </div>
         <ul class="listing">
             <li class="list-item" data-id="1">Item 0</li>
@@ -50,7 +48,6 @@
 <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
 <script>
     $('.informationable li').click(function () {
-        
         var fileInput;
         switch(this.innerHTML) {
             case 'Info 1':
@@ -90,7 +87,11 @@
     });
     $('.trash-can').droppable({
         drop: function (event, ui) {
-            ui.draggable.remove();
+            if (confirm("Delete?") == true) {
+                ui.draggable.remove();
+            } else {
+                console.log("Delete cancelled.");
+            }
         }
     })
 
